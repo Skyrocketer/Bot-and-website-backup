@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="icon" href="https://userfiles.uptimerobot.com/img/1420470-1630193296.png">
+<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+<title>Help Bot</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+/* Style the body */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+/* Header/logo Title */
+.header {
+  padding: 1px;
+  text-align: center;
+  background: #1E90FF;
+  color: #E16F00;
+}
+
+/* Increase the font size of the heading */
+.header h1 {
+  font-size: 40px;
+}
+
+/* Sticky navbar - toggles between relative and fixed, depending on the scroll position. It is positioned relative until a given offset position is met in the viewport - then it "sticks" in place (like position:fixed). The sticky value is not supported in IE or Edge 15 and earlier versions. However, for these versions the navbar will inherit default position */
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+}
+
+/* Style the navigation bar links */
+.navbar a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 20px;
+  text-decoration: none;
+}
+
+
+/* Right-aligned link */
+.navbar a.right {
+  float: right;
+}
+
+/* Change color on hover */
+.navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Active/current link */
+.navbar a.active {
+  background-color: #666;
+  color: white;
+}
+
+/* Column container */
+.row {  
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+}
+
+/* Create two unequal columns that sits next to each other */
+/* Sidebar/left column */
+.side {
+  -ms-flex: 30%; /* IE10 */
+  flex: 30%;
+  background-color: #f1f1f1;
+  padding: 20px;
+}
+
+/* Main column */
+.main {   
+  -ms-flex: 70%; /* IE10 */
+  flex: 70%;
+  background-color: white;
+  padding: 20px;
+}
+
+/* Fake image, just for this example */
+.fakeimg {
+  background-color: none;
+  width: ;
+  padding: 0px;
+}
+
+/* Footer */
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: #ddd;
+}
+
+/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 700px) {
+  .row {   
+    flex-direction: column;
+  }
+}
+
+/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+@media screen and (max-width: 400px) {
+  .navbar a {
+    float: none;
+    width: 100%;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Help Bot</h1>
+  <h2>Home</h2>
+</div>
+
+<div class="navbar">
+  <a href="https://www.help-bot.tk" class="active">Home</a>
+  <a href="/invite">Invite Bot</a>
+  <a href="/info">Info/faq</a>
+  <a href="/announcements" class="right">Announcements</a>
+  <a href="/codeeditor" class="right">Code Editor</a>
+  <a href="/suggest" class="right">Suggest feature</a>
+  <a href="/login" class="right">Login admin panel</a>
+  <a href="/dashboard" class="">Dashboard</a>
+  <a href="/community" class="">Community</a>
+</div>
+
+<div class="row">
+  <div class="side">
+    <h2>About the Help Bot</h2>
+    <h5>Help Bot commands:</h5>
+    <img class="fakeimg" style="height:200px;" src='https://i.ibb.co/pLYNZzQ/image1.png'>
+    <p>Still in dev, but is being innovated</p>
+    <h3>Description:</h3>
+    <p>Glitchedcheses#2190 made this bot, and it is used as a custom automod, helpbot, and funbot</p>
+  </div>
+  <div class="main">
+    <h2>Bot Creator:</h2>
+    <h5>Glitchedcheses#2190</h5>
+    <img class="fakeimg" style="height:200px" src='https://i.ibb.co/Q9BkhZP/image2.png'><img>
+    <p>The dev.</p>
+    <br>
+    <h2>The Help Bot</h2>
+    <h5>Help Bot is a responsive bot written in python</h5>
+    <img src="https://i.ibb.co/7Rp4d0g/image3.png" style='height:200px;'></a>
+    <p>Help Bot picture</p>
+  </div>
+</div>
+
+<div class="footer">
+  <h2>Help Bot is a good bot<span onclick='window.location.href = "https://www.help-bot.tk/helpbotgud";'>™</span></h2>
+  <div class="copyright" align="center">
+  <script>
+    document.write('&copy;' );
+    document.write(' 2021 - ');
+    document.write(new Date().getFullYear());
+    document.write(' www.help-bot.tk - All Rights Reserved.');
+    document.write('<br/>Page last load time: ');
+    document.write(document.lastModified);
+  </script>
+</div>
+</div>
+
+</body>
+</html>
+
+<!--<h2 onmouseover='window.location.href = "https://www.help-bot.tk/helpbotgud";'>Help Bot is a good bot™</h2>
+  -->

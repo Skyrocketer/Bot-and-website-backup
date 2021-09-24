@@ -1,0 +1,351 @@
+<head>
+<link rel="icon" href="https://userfiles.uptimerobot.com/img/1420470-1630193296.png">
+<title>Help Bot</title>
+<link rel="icon" href="https://userfiles.uptimerobot.com/img/1420470-1630193296.png">
+</head>
+
+<title>WYSIWYG EDITOR</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+/* Style the body */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+/* Header/logo Title */
+.header {
+  padding: 1px;
+  text-align: center;
+  background: #1E90FF;
+  color: #E16F00;
+}
+
+/* Increase the font size of the heading */
+.header h1 {
+  font-size: 40px;
+}
+
+/* Sticky navbar - toggles between relative and fixed, depending on the scroll position. It is positioned relative until a given offset position is met in the viewport - then it "sticks" in place (like position:fixed). The sticky value is not supported in IE or Edge 15 and earlier versions. However, for these versions the navbar will inherit default position */
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+}
+
+/* Style the navigation bar links */
+.navbar a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 20px;
+  text-decoration: none;
+}
+
+
+/* Right-aligned link */
+.navbar a.right {
+  float: right;
+}
+
+/* Change color on hover */
+.navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Active/current link */
+.navbar a.active {
+  background-color: #666;
+  color: white;
+}
+
+/* Column container */
+.row {  
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+}
+
+/* Create two unequal columns that sits next to each other */
+/* Sidebar/left column */
+.side {
+  -ms-flex: 30%; /* IE10 */
+  flex: 30%;
+  background-color: #f1f1f1;
+  padding: 20px;
+}
+
+/* Main column */
+.main {   
+  -ms-flex: 70%; /* IE10 */
+  flex: 70%;
+  background-color: white;
+  padding: 20px;
+}
+
+/* Fake image, just for this example */
+.fakeimg {
+  background-color: none;
+  width: ;
+  padding: 0px;
+}
+
+/* Footer */
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: #ddd;
+}
+
+/* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 700px) {
+  .row {   
+    flex-direction: column;
+  }
+}
+
+/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+@media screen and (max-width: 400px) {
+  .navbar a {
+    float: none;
+    width: 100%;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Help Bot</h1>
+  <h2>Code Editor</h2>
+</div>
+
+<div class="navbar">
+  <a href="https://www.help-bot.tk">Home</a>
+  <a href="/invite">Invite Bot</a>
+  <a href="/info">Info/faq</a>
+  <a href="/announcements" class="right">Announcements</a>
+  <a href="/codeeditor" class="right active">Code Editor</a>
+  <a href="/suggest" class="right">Suggest feature</a>
+  <a href="/login" class="right">Login admin panel</a>
+  <a href="/dashboard" class="">Dashboard</a>
+  <a href="/community" class="">Community</a>
+</div>
+
+
+<body onload="enableEditMode()">
+
+<h1 hidden id="1">false</h1>
+
+<h1 hidden id="link"></h1>
+
+<div class="btn-group" style="width:100%" onclick="UnDisable();">
+
+<button onclick="Edit('bold');" style="width:5%;"><b>B</b></button>
+<button onclick="Edit('italic');" style="width:5%;"><i>I</i></button>
+<button onclick="Edit('underline');" style="width:5%;"><u>U</u></button>
+<button onclick="Edit('strikeThrough');" style="width:5%;"><s>S</s></button>
+<button onclick="Edit('justifyLeft');" style="width:5%;">Left</button>
+<button onclick="Edit('justifyCenter');" style="width:5%;">Center</button>
+<button onclick="Edit('justifyRight');" style="width:5%;">Right</button>
+<button onclick="Edit('cut');" style="width:5%;">Cut</button>
+<button onclick="Edit('copy');" style="width:5%;">Copy</button>
+<button onclick="Edit('indent');" style="width:5%;">Indent</button>
+<button onclick="Edit('outdent');" style="width:5%;">Outdent</button>
+<button onclick="Edit('subscript');" style="width:5%;">Sub</button>
+<button onclick="Edit('superscript');" style="width:5%;">Super</button>
+<button onclick="Edit('undo');" style="width:5%;">Undo</button>
+<button onclick="Edit('redo');" style="width:5%;">Redo</button>
+<button onclick="Edit('insertUnorderedList');" style="width:5%;">Bullet</button>
+<button onclick="Edit('insertOrderedList');" style="width:5%;">Number</button>
+<button onclick="Edit('insertParagraph');" style="width:5%;">⁋</button>
+<button onclick="Edit('insertHorizontalRule');" style="width:5%;">Line</button>
+<button onclick="Link();" style="width:5%;border-right:solid 1px black;">🔗</button>
+<button onclick="Edit('unlink');" style="width:5%;border-right: 1px solid black;"><s>🔗</s></button>
+<select onchange="execVal('fontName',this.value)" style="width:10%;border:solid 1px black;border-right:none;border-left:none;">
+<option value="Arial">Arial</option>
+<option value="Comic Sans MS">Comic Sans MS</option>
+<option value="Courier">Courier</option>
+<option value="Georgia">Georgia</option>
+<option value="Tahoma">Tahoma</option>
+<option value="Times New Roman">Times New Roman</option>
+<option value="Verdana">Verdana</option>
+</select>
+<input onchange="execVal('fontSize',this.value);" style="width:10%;border:solid 1px black;" placeholder="Font Size">
+<input id="ColorInputTextColor" type="color" style="width:10%;border-right:none;border-left:none;" 
+hidden onchange="execVal('foreColor',this.value);document.getElementById('TxtColor').style.backgroundColor = this.value;" onkeyup="execVal('foreColor',this.value);document.getElementById('TxtColor').style.backgroundColor = this.value;" value="#000000" onclick="execVal('foreColor',this.value);">
+<button onclick="ColorInputTextColor.click();" id="TxtColor" style="width:10%;border-right:none;border-left:none;">Text Color</button>
+<input id="ColorInputHighlight" type="color" style="width:10%;" hidden onclick="execVal('hiliteColor',this.value);" onchange="execVal('hiliteColor',this.value);document.getElementById('TxtHighlightColor').style.backgroundColor = this.value;" onkeyup="execVal('hiliteColor',this.value);document.getElementById('TxtHighlightColor').style.backgroundColor = this.value;" value="#000000">
+<button onclick="ColorInputHighlight.click();" id="TxtHighlightColor" style="width:10%;">Highlight</button>
+<button onclick="Image();" style="width:5%;">Img</button>
+<button onclick="Code();" style="width:5%;">&lt;Code&gt;</button>
+
+</div>
+
+<iframe onload="IdSet(this.id);" name="richTextField" id="TXTAREA" style="width:100%; height:90%; resize:none; outline:none; border:solid 1px black;">
+
+</iframe>
+
+<textarea readonly hidden style="resize:none; width:100%; height:90%; resize:none; outline:none; border:solid 1px black;" id="Code">
+
+</textarea>
+
+<style>
+
+.btn-group button {
+  background-color: transparent; /* Green background */
+  border: 1px solid black; /* Green border */
+  color: black; /* White text */
+  padding: 10px 10px; /* Some padding */
+  cursor: pointer; /* Pointer/hand icon */
+  float: left; /* Float the buttons side by side */
+}
+.btn-group input {
+  background-color: transparent; /* Green background */
+  border: 1px solid black; /* Green border */
+  color: black; /* White text */
+  padding: 10px 10px; /* Some padding */
+  cursor: pointer; /* Pointer/hand icon */
+  float: left; /* Float the buttons side by side */
+}
+.btn-group select {
+  background-color: transparent; /* Green background */
+  border: 1px solid black; /* Green border */
+  color: black; /* White text */
+  padding: 10px 10px; /* Some padding */
+  cursor: pointer; /* Pointer/hand icon */
+  float: left; /* Float the buttons side by side */
+}
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.btn-group button:not(:last-child) {
+  border-right: none; /* Prevent double borders */
+}
+.btn-group button:focus {
+    outline:none;
+}
+.btn-group input:focus {
+    outline:none;
+}
+.btn-group select:focus {
+    outline:none;
+}
+
+</style>
+
+
+<script>
+
+function enableEditMode() {
+
+richTextField.document.designMode = "on";
+
+}
+
+
+function Edit(command) {
+
+richTextField.document.execCommand(command, false, null);
+
+}
+
+
+function execVal(command, value) {
+
+richTextField.document.execCommand(command, false, value);
+
+}
+
+
+function Code() {
+
+var a = document.getElementById("TXTAREA");
+var b = a.contentDocument;
+
+if (document.getElementById("1").innerHTML == "false") {
+
+document.getElementById("Code").hidden = false;
+document.getElementById("1").innerHTML = "true";
+
+var x = document.getElementById("TXTAREA");
+var y = x.contentDocument;
+var TXT1 = y.body.innerHTML;
+
+document.getElementById("Code").innerHTML = TXT1;
+
+y.addEventListener("keyup", function() {
+
+var s = document.getElementById("TXTAREA");
+var w = s.contentDocument;
+var TXT2 = w.body.innerHTML;
+
+document.getElementById("Code").innerHTML = TXT2;
+
+})
+
+}
+else {
+
+document.getElementById("Code").hidden = true;
+document.getElementById("1").innerHTML = "false";
+
+}
+
+}
+
+
+function Link() {
+
+var Link = prompt("Enter a URL,http://. You also can copy/paste.");
+var Name = prompt("Enter display text");
+
+var x = document.getElementById("TXTAREA");
+var y = x.contentDocument;
+var TXT = y.body;
+
+var a = document.createElement("a");
+a.innerText = Name;
+a.href = Link;
+a.title = "Right click and press open link in new tab to follow.";
+TXT.appendChild(a);
+
+}
+
+
+function Image() {
+
+var Src = prompt("Enter image URL,http://. You also can copy/paste.");
+var Wd = prompt("Enter width in px,500. Ignore for original size");
+var Ht = prompt("Enter height in px,1000. Ignore for original size");
+var Title = prompt("Enter display title text.");
+
+var x = document.getElementById("TXTAREA");
+var y = x.contentDocument;
+var TXT = y.body;
+
+var img = document.createElement("img");
+img.src = Src;
+img.style.width = Wd;
+img.style.height = Ht;
+img.title = Title;
+TXT.appendChild(img);
+
+}
+
+</script>
+
+</body>
